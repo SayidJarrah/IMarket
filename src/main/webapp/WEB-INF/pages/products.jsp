@@ -16,6 +16,7 @@
       <td> ${product.price}</td>
       <td> ${product.availableAmount}</td>
       <td> ${product.appearanceDate}</td>
+      <td><img height="100px" width="100px" src="/imageDisplay?id=${product.id}"/></td>
     </tr>
   </c:forEach>
 </table>
