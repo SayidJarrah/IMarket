@@ -25,6 +25,4 @@ public class ProductCategoryDaoImpl implements ProductCategoryDao {
         return jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, new Object[]{id}, new ProductCategoryRowMapper());
     }
 
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-    }
 }

@@ -12,4 +12,6 @@ public interface ProductService {
     public Product getProductById(int id);
 
     public void save(Product product);
+
+    public Product binding(Product product);
 }

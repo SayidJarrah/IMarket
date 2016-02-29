@@ -4,7 +4,8 @@
 
 <h3>
 	<a href="products.html">VIEW ALL PRODUCTS... </a>
-	<a href="/addProduct">ADD NEW PRODUCT </a>
+	<br>
+	<a href="/addNewProduct.html">ADD NEW PRODUCT </a>
 </h3>
 </body>
 </html>
