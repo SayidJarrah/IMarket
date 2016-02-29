@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Component
 public class Product  {
     private int Id;
-    private ProductCategory productCategory;
+    private ProductCategory category;
     private String name;
     private double price;
     private byte[] image;
@@ -27,12 +27,12 @@ public class Product  {
         Id = id;
     }
 
-    public ProductCategory getProductCategory() {
-        return productCategory;
+    public ProductCategory getCategory() {
+        return category;
     }
 
-    public void setProductCategory(ProductCategory productCategory) {
-        this.productCategory = productCategory;
+    public void setCategory(ProductCategory productCategory) {
+        this.category = productCategory;
     }
 
     public String getName() {
@@ -95,7 +95,7 @@ public class Product  {
     public String toString() {
         return "Product{" +
                 "Id=" + Id +
-                ", productCategory=" + productCategory +
+                ", category=" + category +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                // ", image=" + Arrays.toString(image) +

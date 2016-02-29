@@ -12,6 +12,7 @@
         <th> Id</th>
         <th> Name</th>
         <th> Price</th>
+        <th> Category</th>
         <th> Amount</th>
         <th> Appearance Date</th>
         <th> Img</th>
@@ -20,6 +21,7 @@
     <td> ${product.id}</td>
     <td><a href='<spring:url value="/detail?id=${product.id}"/>'> ${product.name} </a></td>
     <td> ${product.price}</td>
+    <td> ${product.category.name}</td>
     <td> ${product.availableAmount}</td>
     <td> ${product.appearanceDate}</td>
     <td><img height="90px" width="90px" src="/imageDisplay?id=${product.id}"/></td>

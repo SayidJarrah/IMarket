@@ -23,13 +23,7 @@
         <property name="password" value="1234"/>
     </bean>
 
-    <bean id="productDao" class="com.dkorniichuk.app.dao.impl.ProductDaoImpl">
-       <property name="jdbcTemlate" ref="jdbcTemplate"/>
-    </bean>
 
-    <bean id="productService" class="com.dkorniichuk.app.service.impl.ProductServiceImpl">
-        <property name="productDao" ref="productDao"/>
-    </bean>
 
 
 </beans>
