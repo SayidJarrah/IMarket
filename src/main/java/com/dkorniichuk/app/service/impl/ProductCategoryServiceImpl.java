@@ -7,11 +7,14 @@ import com.dkorniichuk.app.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
 @Component
 public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Autowired
     ProductCategoryDaoImpl categoryDao;
+
     @Override
     public List<ProductCategory> getAllCategory() {
         return categoryDao.getAll();
@@ -24,6 +27,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
     @Override
     public void save(ProductCategory category) {
-
+        category.setAppearenceDate(LocalDateTime.now());
+        categoryDao.save(category);
     }
 }

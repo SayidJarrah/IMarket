@@ -14,7 +14,7 @@
 
     <bean id="multipartResolver"
           class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="500000" />
+        <property name="maxUploadSize" value="5000000" />
     </bean>
 
 
@@ -24,7 +24,7 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/mydb"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/IMarket"/>
         <property name="username" value="root"/>
         <property name="password" value="1234"/>
     </bean>

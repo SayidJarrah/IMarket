@@ -17,7 +17,7 @@ public class ProductDaoImpl implements ProductDao {
     private ProductCategoryDaoImpl productCategoryDao;
     private static final String SQL_SELECT_ALL = "SELECT * FROM Product";
     private static final String SQL_SELECT_BY_ID = "SELECT * FROM Product WHERE id_product = ?";
-    private static final String SQL_INSERT_NEW_PRODUCT = "INSERT INTO Product (id_product,id_product_category,product_name,product_price,product_image,product_description,appearance_date,available_amount) VALUES(?,?,?,?,?,?,?,?)";
+    private static final String SQL_INSERT_NEW_PRODUCT = "INSERT INTO Product (id_product_category,product_name,product_price,product_image,product_description,appearance_date,available_amount) VALUES(?,?,?,?,?,?,?)";
 
 
     @Override
@@ -32,7 +32,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void save(Product product) {
-       jdbcTemplate.update(SQL_INSERT_NEW_PRODUCT,new Object[]{product.getId(),
+       jdbcTemplate.update(SQL_INSERT_NEW_PRODUCT,new Object[]{
                     product.getCategory().getId(),
                     product.getName(),
                     product.getPrice(),

@@ -36,7 +36,7 @@
             </tr>
 
             <tr>
-                <th><label for="amount">Product price : </label></th>
+                <th><label for="amount">Product amount : </label></th>
                 <td><sf:input path="availableAmount" id="amount"/></td>
             </tr>
 

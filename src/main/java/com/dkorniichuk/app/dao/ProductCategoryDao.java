@@ -9,5 +9,6 @@ public interface ProductCategoryDao {
 
     public List<ProductCategory> getAll();
     public ProductCategory getById(int id);
+    public void save(ProductCategory category);
 
 }

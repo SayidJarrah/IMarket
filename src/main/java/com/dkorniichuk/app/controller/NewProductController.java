@@ -23,14 +23,14 @@ public class NewProductController {
     ProductService productService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String initForm(Model model){
+    public String initProductForm(Model model){
         model.addAttribute("product", new Product());
         model.addAttribute("categories", categoryService.getAllCategory());
         return "addNewProduct";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submitForm(Model model, Product product, @RequestParam("file") MultipartFile file) throws IOException {
+    public String submitProductForm(Model model, Product product, @RequestParam("file") MultipartFile file) throws IOException {
         model.addAttribute("product",product);
         productService.binding(product);
         product.setImage(file.getBytes());
@@ -38,6 +38,8 @@ public class NewProductController {
         productService.save(product);
         return "successAddedProduct";
     }
+
+
 
 
 }
