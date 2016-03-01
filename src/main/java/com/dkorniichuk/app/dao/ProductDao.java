@@ -10,5 +10,6 @@ public interface ProductDao {
     public List<Product> getAll();
     public Product getById(int id);
     public void save(Product product);
+    public List<Product> search(String keyWord);
 
 }

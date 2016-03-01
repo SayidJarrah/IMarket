@@ -14,4 +14,6 @@ public interface ProductService {
     public void save(Product product);
 
     public Product binding(Product product);
+
+    public List<Product> search(String keyword);
 }

@@ -3,7 +3,6 @@ package com.dkorniichuk.app.entity;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 
 @Component
 public class Product  {
@@ -99,7 +98,7 @@ public class Product  {
                 ", category=" + category +
                 ", name='" + name + '\'' +
                 ", price=" + price +
-                ", image=" + Arrays.toString(image) +
+              //  ", image=" + Arrays.toString(image) +
                 ", description='" + description + '\'' +
                 ", appearanceDate=" + appearanceDate +
                 ", availableAmount=" + availableAmount +

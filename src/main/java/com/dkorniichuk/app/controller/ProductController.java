@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -28,6 +31,21 @@ public class ProductController {
         Product product = productService.getProductById(id);
         model.addAttribute(product);
         return "detail";
+    }
+
+    @RequestMapping("/search")
+    public String initSearchForm() {
+        return "search";
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public void submitSearch(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String keyword = request.getParameter("keyword");
+        List<Product> list = productService.search(keyword);
+        for (Product product : list){
+            response.getOutputStream().println(product.getId()+" "+product.getName()+" "+product.getPrice());
+        }
+      //  return "hello";
     }
 
 

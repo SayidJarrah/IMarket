@@ -2,6 +2,7 @@ package com.dkorniichuk.app.dao.impl;
 
 import com.dkorniichuk.app.dao.ProductDao;
 import com.dkorniichuk.app.dao.util.ProductRowMapper;
+import com.dkorniichuk.app.dao.util.SqlSearchQueryGenerator;
 import com.dkorniichuk.app.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -40,5 +41,10 @@ public class ProductDaoImpl implements ProductDao {
                     product.getDescription(),
                     product.getAppearanceDate(),
                     product.getAvailableAmount()});
+    }
+
+    @Override
+    public List<Product> search(String keyWord) {
+        return jdbcTemplate.query(SqlSearchQueryGenerator.generateQuery(keyWord),new ProductRowMapper(productCategoryDao));
     }
 }

@@ -8,6 +8,9 @@
 	<a href="/addNewProduct.html">ADD NEW PRODUCT </a>
 	<br>
 	<a href="/addNewCategory.html">ADD NEW CATEGORY </a>
+	<br>
+	<a href="/search.html">SEARCH PRODUCT</a>
+
 </h3>
 </body>
 </html>
