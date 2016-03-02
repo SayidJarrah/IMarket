@@ -18,4 +18,6 @@ public interface ProductService {
     public List<Product> search(String keyword);
 
     public void update(Product product);
+
+    public void delete(int productId);
 }

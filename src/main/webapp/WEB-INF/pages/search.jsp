@@ -31,8 +31,8 @@
                 <td><input type="submit" name="edit" value="edit"></td>
                 <input type="hidden" name="id" value="${product.id}">
             </form>
-            <form action="/remove" method="post">
-                <td><input type="submit" name="remove" value="remove"></td>
+            <form method="get" action="/search/${product.id}">
+               <td> <input type="submit"  onclick="location.href='search/${product.id}" value="Remove" ></td>
             </form>
         </tr>
     </c:forEach>
