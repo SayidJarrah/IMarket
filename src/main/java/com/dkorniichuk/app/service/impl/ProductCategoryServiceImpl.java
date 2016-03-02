@@ -1,7 +1,7 @@
 package com.dkorniichuk.app.service.impl;
 
 
-import com.dkorniichuk.app.dao.impl.ProductCategoryDaoImpl;
+import com.dkorniichuk.app.dao.ProductCategoryDao;
 import com.dkorniichuk.app.entity.ProductCategory;
 import com.dkorniichuk.app.service.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 @Component
 public class ProductCategoryServiceImpl implements ProductCategoryService {
     @Autowired
-    ProductCategoryDaoImpl categoryDao;
+    ProductCategoryDao categoryDao;
 
     @Override
     public List<ProductCategory> getAllCategory() {

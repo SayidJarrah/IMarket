@@ -36,7 +36,7 @@ public class NewProductController {
         product.setImage(file.getBytes());
         System.out.println(product);
         productService.save(product);
-        return "successAddedProduct";
+        return "redirect:/products.html";
     }
 
 
