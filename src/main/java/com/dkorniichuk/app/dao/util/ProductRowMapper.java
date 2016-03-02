@@ -16,6 +16,9 @@ public class ProductRowMapper implements RowMapper<Product>{
         this.productCategoryDao = productCategoryDao;
     }
 
+    public ProductRowMapper() {
+    }
+
     @Override
     public Product mapRow(ResultSet resultSet, int i) throws SQLException {
         Product product = new Product();

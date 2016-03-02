@@ -50,4 +50,9 @@ public class ProductServiceImpl implements ProductService {
               return productDao.search(keyString);
     }
 
+    @Override
+    public void update(Product product) {
+     productDao.update(product);
+    }
+
 }

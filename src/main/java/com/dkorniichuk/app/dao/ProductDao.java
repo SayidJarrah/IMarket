@@ -11,5 +11,6 @@ public interface ProductDao {
     public Product getById(int id);
     public void save(Product product);
     public List<Product> search(String keyWord);
+    public void update(Product product);
 
 }

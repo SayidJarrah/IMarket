@@ -16,4 +16,6 @@ public interface ProductService {
     public Product binding(Product product);
 
     public List<Product> search(String keyword);
+
+    public void update(Product product);
 }
