@@ -5,5 +5,7 @@ import com.dkorniichuk.app.entity.User;
 
 public interface UserService {
 
-    public User getUser(String login);
+    public User get(String login);
+
+    public void add(User user);
 }

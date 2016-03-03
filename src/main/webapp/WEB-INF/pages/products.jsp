@@ -25,6 +25,11 @@
     <td> ${product.availableAmount}</td>
     <td> ${product.appearanceDate}</td>
     <td><img height="90px" width="90px" src="/public/imageDisplay?id=${product.id}"/></td>
+    <td>
+        <form method="get" action="/public/products/${product.id}">
+            <td><input type="submit" onclick="location.href='/public/products/${product.id}" value="Buy"></td>
+        </form>
+    </td>
     </tr>
     </c:forEach>
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class Product  {
+public class Product{
     private int Id;
     private ProductCategory category;
     private String name;
@@ -104,5 +104,22 @@ public class Product  {
                 ", availableAmount=" + availableAmount +
                 ", lastModifiedDate=" + lastModifiedDate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        if (Id != product.Id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Id;
     }
 }

@@ -15,6 +15,7 @@ public class User {
     private String city;
     private long phone;
     private LocalDateTime registrationDate;
+    private UserRole role;
 
     public User() {
     }
@@ -99,6 +100,15 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
+    public String getRole() {
+        return role.name();
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
@@ -112,6 +122,8 @@ public class User {
                 ", city='" + city + '\'' +
                 ", phone=" + phone +
                 ", registrationDate=" + registrationDate +
+                ", role=" + role +
                 '}';
     }
+
 }

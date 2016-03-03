@@ -1,6 +1,7 @@
 package com.dkorniichuk.app.controller;
 
 
+import com.dkorniichuk.app.entity.Bucket;
 import com.dkorniichuk.app.entity.Product;
 import com.dkorniichuk.app.service.ProductCategoryService;
 import com.dkorniichuk.app.service.ProductService;
@@ -67,6 +68,12 @@ public class ProductController {
     public String removeProduct(@PathVariable("id") int id){
         productService.delete(id);
         return "redirect:/search.html";
+    }
+
+    @RequestMapping(value = "/public/products/{id}",method = RequestMethod.GET)
+    public String  addToBucket(@PathVariable("id") int id){
+        Bucket.getINSTANCE().add(productService.getProductById(id));
+        return "redirect:/public/products";
     }
 
 

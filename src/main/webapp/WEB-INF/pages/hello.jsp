@@ -7,15 +7,20 @@
 
 <form:form>
 <h3>
+     <c:choose>
+		 <c:when test="${pageContext.request.userPrincipal.name != null}">
+			 Welcome,  ${pageContext.request.userPrincipal.name} !
+		 </c:when>
+		 <c:otherwise>
+			 Welcome,  Guest !
+		 </c:otherwise>
+	 </c:choose>
 
-	<c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h2>
-			Welcome : ${pageContext.request.userPrincipal.name}
-		</h2>
-	</c:if>
-
-
+	<br>
+	<br>
 	<a href="/login.html">LOG IN </a>
+	<br>
+	<a href="/registration.html">SIGN UP </a>
 	<br>
 	<a href="/public/products.html">VIEW ALL PRODUCTS... </a>
 	<br>
@@ -24,6 +29,8 @@
 	<a href="/admin/addNewCategory.html">ADD NEW CATEGORY </a>
 	<br>
 	<a href="/search.html">SEARCH PRODUCT</a>
+	<br>
+	<a href="/bucket.html">CHECK OUT</a>
 </form:form>
 </h3>
 </body>
