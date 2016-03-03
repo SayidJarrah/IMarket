@@ -16,7 +16,7 @@ public class ImageController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
+    @RequestMapping(value = "/public/imageDisplay", method = RequestMethod.GET)
     public void showImage(@RequestParam("id") Integer id, HttpServletResponse response) throws IOException {
         Product product = productService.getProductById(id);
         response.setContentType("image/jpeg, image/jpg, image/png, image/gif");

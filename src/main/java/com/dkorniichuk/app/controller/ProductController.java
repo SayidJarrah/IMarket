@@ -23,13 +23,13 @@ public class ProductController {
     @Autowired
     private ProductCategoryService categoryService;
 
-    @RequestMapping("/products")
+    @RequestMapping("/public/products")
     public String allProducts(Model model) {
         model.addAttribute("products", productService.getAllProducts());
         return "products";
     }
 
-    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    @RequestMapping(value = "/public/detail", method = RequestMethod.GET)
     public String showProductDetails(@RequestParam("id") Integer id, Model model) throws IOException {
         Product product = productService.getProductById(id);
         model.addAttribute(product);
@@ -48,21 +48,22 @@ public class ProductController {
         return "search";
     }
 
-    @RequestMapping(value = "/edit")
+    @RequestMapping(value = "/admin/edit")
     public String initEdit(Model model,HttpServletRequest request){
         String id = request.getParameter("id");
         model.addAttribute("product",productService.getProductById(Integer.parseInt(id)));
         model.addAttribute("categories", categoryService.getAllCategory());
         return "edit";
     }
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public void submitEdit(Product product, Model model){
+    @RequestMapping(value = "/admin/edit", method = RequestMethod.POST)
+    public String submitEdit(Product product, Model model){
         model.addAttribute("product",product);
         System.out.println(product);
         productService.update(product);
+        return "redirect:/public/products.html";
     }
 
-    @RequestMapping(value = "search/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/search/{id}",method = RequestMethod.GET)
     public String removeProduct(@PathVariable("id") int id){
         productService.delete(id);
         return "redirect:/search.html";

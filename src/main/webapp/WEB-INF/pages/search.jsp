@@ -25,14 +25,14 @@
                 <td> ${product.category.name}</td>
                 <td> ${product.availableAmount}</td>
                 <td> ${product.appearanceDate}</td>
-                <td><img height="90px" width="90px" src="/imageDisplay?id=${product.id}"/></td>
+                <td><img height="90px" width="90px" src="/public/imageDisplay?id=${product.id}"/></td>
                 <input type="hidden" name="id" value="${product.id}">
-            <form action="/edit" method="get">
+            <form action="/admin/edit" method="get">
                 <td><input type="submit" name="edit" value="edit"></td>
                 <input type="hidden" name="id" value="${product.id}">
             </form>
-            <form method="get" action="/search/${product.id}">
-               <td> <input type="submit"  onclick="location.href='search/${product.id}" value="Remove" ></td>
+            <form method="get" action="/admin/search/${product.id}">
+               <td> <input type="submit"  onclick="location.href='/admin/search/${product.id}" value="Remove" ></td>
             </form>
         </tr>
     </c:forEach>

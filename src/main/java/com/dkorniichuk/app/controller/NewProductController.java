@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("addNewProduct.html")
+@RequestMapping("/admin/addNewProduct.html")
 public class NewProductController {
     @Autowired
     private ProductCategoryService categoryService;

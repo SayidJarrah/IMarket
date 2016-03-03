@@ -7,7 +7,7 @@
 
 </head>
 <body>
-<img height="200px" width="200px" src="/imageDisplay?id=${product.id}"/>
+<img height="200px" width="200px" src="/public/imageDisplay?id=${product.id}"/>
 <br>
 <b>Name: </b><p>${product.name}</p>
 <b>Category: </b><p>${product.category.name}</p>

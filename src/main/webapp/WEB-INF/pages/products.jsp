@@ -19,12 +19,12 @@
         <c:forEach items="${products}" var="product">
     </tr>
     <td> ${product.id}</td>
-    <td><a href='<spring:url value="/detail?id=${product.id}"/>'> ${product.name} </a></td>
+    <td><a href='<spring:url value="/public/detail?id=${product.id}"/>'> ${product.name} </a></td>
     <td> ${product.price}</td>
     <td> ${product.category.name}</td>
     <td> ${product.availableAmount}</td>
     <td> ${product.appearanceDate}</td>
-    <td><img height="90px" width="90px" src="/imageDisplay?id=${product.id}"/></td>
+    <td><img height="90px" width="90px" src="/public/imageDisplay?id=${product.id}"/></td>
     </tr>
     </c:forEach>
 

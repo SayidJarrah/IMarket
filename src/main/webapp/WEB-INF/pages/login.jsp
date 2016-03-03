@@ -1,20 +1,39 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Spring Security</title>
+  <title>Login Page</title>
 </head>
+<body onload='document.loginForm.username.focus();'>
 
-<body>
-  <c:url value="/j_spring_security_check" var="loginUrl" />
-  <form action="${loginUrl}" method="post">
-    <h2>Please sign in</h2>
-    <input type="text" name="j_username" placeholder="Email address">
-    <input type="password" name="j_password" placeholder="Password">
-    <button type="submit">Enter</button>
+<h1>Your credentials </h1>
+
+  <h2>Login with Username and Password</h2>
+
+  <c:if test="${not empty error}">
+    <div class="error">${error}</div>
+  </c:if>
+  <c:if test="${not empty msg}">
+    <div class="msg">${msg}</div>
+  </c:if>
+
+  <form name='loginForm'
+        action="<c:url value='/j_spring_security_check'/>" method='POST'>
+
+    <table>
+      <tr>
+        <td>User:</td>
+        <td><input type='text' name='username' value=''></td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type='password' name='password' /></td>
+      </tr>
+      <tr>
+        <td colspan='2'><input name="submit" type="submit"
+                               value="submit" /></td>
+      </tr>
+    </table>
+
   </form>
 
 </body>
