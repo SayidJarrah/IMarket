@@ -1,8 +1,12 @@
 package com.dkorniichuk.app.controller;
 
+import com.dkorniichuk.app.dao.UserDao;
 import com.dkorniichuk.app.entity.Bucket;
+import com.dkorniichuk.app.service.OrderService;
 import com.dkorniichuk.app.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class BucketController {
     @Autowired
     private ProductService productService;
+    @Autowired
+    private OrderService orderService;
+    @Autowired
+    private UserDao userDao;
+
 
     @RequestMapping(value = "/bucket",method = RequestMethod.GET)
     public String initBucketForm(Model model) {
@@ -24,5 +33,15 @@ public class BucketController {
     public String  addToBucket(@PathVariable("id") int id){
         Bucket.getINSTANCE().delete(productService.getProductById(id));
         return "redirect:/bucket";
+    }
+
+    @RequestMapping(value = "/order",method = RequestMethod.POST)
+    public String  initOrder(Model model){
+        model.addAttribute("products", Bucket.getINSTANCE().getProducts());
+        productService.updateAmount(Bucket.getINSTANCE().getProducts());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        orderService.add(Bucket.getINSTANCE().getProducts(),userDao.getUser(auth.getName()));
+
+        return "order";
     }
 }

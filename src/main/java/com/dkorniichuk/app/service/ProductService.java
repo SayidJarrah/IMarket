@@ -20,4 +20,6 @@ public interface ProductService {
     public void update(Product product);
 
     public void delete(int productId);
+
+    public void updateAmount(List<Product> products);
 }

@@ -20,7 +20,20 @@
             </td>
         </tr>
     </c:forEach>
-
 </table>
+<br>
+<label for="price">Total price</label>
+<label id="price">
+    <c:set var="totalPrice" value="${0}"/>
+    <c:forEach items="${products}" var="product">
+        <c:set var="totalPrice" value="${totalPrice+product.price}"/>
+    </c:forEach>
+    ${totalPrice}
+</label>
+
+<form action="/order" method="post">
+    <td><input type="submit" href='/order' value="Checkout"></td>
+</form>
+
 </body>
 </html>

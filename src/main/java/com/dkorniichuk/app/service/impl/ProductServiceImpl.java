@@ -48,17 +48,24 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> search(String keyString) {
-              return productDao.search(keyString);
+        return productDao.search(keyString);
     }
 
     @Override
     public void update(Product product) {
-     productDao.update(product);
+        productDao.update(product);
     }
 
     @Override
     public void delete(int productId) {
         productDao.delete(productId);
+    }
+
+    @Override
+    public void updateAmount(List<Product> products) {
+        for (Product product : products) {
+            productDao.updateAmount(product);
+        }
     }
 
 

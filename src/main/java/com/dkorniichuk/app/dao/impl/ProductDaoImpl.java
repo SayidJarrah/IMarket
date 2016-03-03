@@ -24,6 +24,7 @@ public class ProductDaoImpl implements ProductDao {
     private static final String SQL_INSERT_NEW_PRODUCT = "INSERT INTO Product (id_product_category,product_name,product_price,product_image,product_description,appearance_date,available_amount) VALUES(?,?,?,?,?,?,?)";
     private static final String SQL_UPDATE = "UPDATE Product SET product_name= ?, product_price = ?, product_description = ?, available_amount = ? WHERE id_product = ? ";
     private static final String SQL_DELETE = "DELETE FROM Product WHERE id_product = ?";
+    private static final String SQL_UPDATE_AMOUNT = "UPDATE Product SET available_amount = ? WHERE id_product = ? ";
 
 
     @Override
@@ -61,6 +62,11 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void delete(int productId) {
-       jdbcTemplate.update(SQL_DELETE,new Object[]{productId});
+        jdbcTemplate.update(SQL_DELETE, new Object[]{productId});
+    }
+
+    @Override
+    public void updateAmount(Product product) {
+        jdbcTemplate.update(SQL_UPDATE_AMOUNT, new Object[]{product.getAvailableAmount() - 1, product.getId()});
     }
 }
