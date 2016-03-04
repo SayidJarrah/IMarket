@@ -1,7 +1,7 @@
 package com.dkorniichuk.app.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value={"/","/hello"})
 public class HelloController {
     @RequestMapping(method = RequestMethod.GET)
-    public String printWelcome(ModelMap model) {
+    public String initStartPage(Model model) {
         model.addAttribute("message", "IMarket");
         return "hello";
     }
@@ -34,7 +34,7 @@ public class HelloController {
         return model;
     }
 
-    @RequestMapping(value = "/admin**", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() {
 
         ModelAndView model = new ModelAndView();
@@ -43,5 +43,6 @@ public class HelloController {
         model.setViewName("admin");
 
         return model;
-    }
+    }*/
+
 }

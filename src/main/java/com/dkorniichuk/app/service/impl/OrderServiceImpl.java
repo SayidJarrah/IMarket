@@ -17,8 +17,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void add(List<Product> products, User user) {
-    /*    for (Product product : products) {
-            orderDao.add(product, user);
-        }*/
+            orderDao.add(products, user);
+
     }
 }

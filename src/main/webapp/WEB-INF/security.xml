@@ -17,16 +17,18 @@
                 username-parameter="username"
                 password-parameter="password" />
         <security:logout logout-success-url="/login?logout" />
+
         <security:csrf disabled="true"/>
     </security:http>
 
 
     <security:authentication-manager>
         <security:authentication-provider>
-            <security:user-service>
-        <!--        <security:user name="user" password="1234" authorities="ROLE_USER"/>-->
-                <security:user name="dima" password="1234" authorities="ROLE_USER"/>
-            </security:user-service>
+            <security:jdbc-user-service data-source-ref="dataSource"
+                               users-by-username-query=
+                                       "select login,password,1 from imarket.user where login=?"
+                               authorities-by-username-query=
+                                       "select login, role from imarket.user where login=?  " />
         </security:authentication-provider>
     </security:authentication-manager>
 

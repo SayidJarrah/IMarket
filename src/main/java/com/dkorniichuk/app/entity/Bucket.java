@@ -19,6 +19,10 @@ public class Bucket {
         products.remove(product);
     }
 
+    public void clear(){
+        products.clear();
+    }
+
     public List<Product> getProducts(){
         return products;
     }

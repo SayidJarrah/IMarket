@@ -32,7 +32,11 @@
     </td>
     </tr>
     </c:forEach>
-
 </table>
+
+<form action="/bucket">
+    <td><input type="submit" href='/bucket' value="To bucket"></td>
+</form>
+
 </body>
 </html>

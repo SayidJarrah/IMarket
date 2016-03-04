@@ -25,7 +25,7 @@ public class ProductController {
     private ProductCategoryService categoryService;
 
     @RequestMapping("/public/products")
-    public String allProducts(Model model) {
+    public String initAllProductsForm(Model model) {
         model.addAttribute("products", productService.getAllProducts());
         return "products";
     }

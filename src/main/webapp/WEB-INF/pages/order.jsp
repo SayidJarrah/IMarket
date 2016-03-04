@@ -17,5 +17,10 @@
     </tr>
   </c:forEach>
   </table>
+
+<form action="/public/products">
+  <td><input type="submit" href='/public/products' value="More purchases!"></td>
+</form>
+
 </body>
 </html>
