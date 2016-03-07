@@ -60,3 +60,9 @@
 
 <H2>Really delete</H2>
 ![alt tag](https://github.com/SayidJarrah/IMarket/blob/master/screens/allProductAfterDelete.jpg)
+
+<H2>User profile</H2>
+![alt tag](https://github.com/SayidJarrah/IMarket/blob/master/screens/userProfile.jpg)
+
+<H2>Really delete</H2>
+![alt tag](https://github.com/SayidJarrah/IMarket/blob/master/screens/history.jpg)
