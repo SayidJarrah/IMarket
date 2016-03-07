@@ -31,7 +31,7 @@
     ${totalPrice}
 </label>
 
-<form action="/order" method="post">
+<form action="/order" method="get">
     <td><input type="submit" href='/order' value="Checkout"></td>
 </form>
 

@@ -18,8 +18,8 @@
   </c:forEach>
   </table>
 
-<form action="/public/products">
-  <td><input type="submit" href='/public/products' value="More purchases!"></td>
+<form action="/cleanBucket">
+  <td><input type="submit" href='/cleanBucket' value="More purchases!"></td>
 </form>
 
 </body>

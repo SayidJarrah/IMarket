@@ -35,7 +35,7 @@
 </table>
 
 <form action="/bucket">
-    <td><input type="submit" href='/bucket' value="To bucket"></td>
+    <input type="submit" href='/bucket' value="To bucket">
 </form>
 
 </body>

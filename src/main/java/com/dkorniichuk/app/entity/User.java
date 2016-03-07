@@ -1,7 +1,8 @@
 package com.dkorniichuk.app.entity;
 
 import org.springframework.stereotype.Component;
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 @Component
 public class User {
@@ -14,7 +15,7 @@ public class User {
     private String address;
     private String city;
     private long phone;
-    private LocalDateTime registrationDate;
+    private Date registrationDate;
     private UserRole role;
 
     public User() {
@@ -92,11 +93,11 @@ public class User {
         this.phone = phone;
     }
 
-    public LocalDateTime getRegistrationDate() {
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(LocalDateTime registrationDate) {
+    public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
 

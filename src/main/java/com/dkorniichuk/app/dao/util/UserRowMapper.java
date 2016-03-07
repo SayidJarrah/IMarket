@@ -20,7 +20,7 @@ public class UserRowMapper implements RowMapper<User> {
         user.setAddress(resultSet.getString("address"));
         user.setCity(resultSet.getString("city"));
         user.setPhone(resultSet.getLong("phone"));
-     //   user.setRegistrationDate(resultSet.getTimestamp("registration_date").toLocalDateTime());
+        user.setRegistrationDate(resultSet.getTimestamp("registration_date"));
         user.setRole(UserRole.valueOf(resultSet.getString("role")));
         return user;
     }

@@ -23,6 +23,8 @@
 	<br>
 	<a href="/registration.html">SIGN UP </a>
 	<br>
+	<a href="/profile">USER PROFILE</a>
+	<br>
 	<a href="/public/products.html">VIEW ALL PRODUCTS... </a>
 	<br>
 	<a href="/admin/addNewProduct.html">ADD NEW PRODUCT </a>

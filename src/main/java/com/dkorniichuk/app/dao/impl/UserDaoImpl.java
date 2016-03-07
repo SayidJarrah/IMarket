@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class UserDaoImpl implements UserDao {
     @Autowired
@@ -29,7 +31,7 @@ public class UserDaoImpl implements UserDao {
                 user.getAddress(),
                 user.getCity(),
                 user.getPhone(),
-                user.getRegistrationDate(),
+                LocalDateTime.now(),
                 user.getLogin(),
                 user.getRole()});
 

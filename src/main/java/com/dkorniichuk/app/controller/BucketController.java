@@ -26,26 +26,31 @@ public class BucketController {
     private UserDao userDao;
 
 
-    @RequestMapping(value = "/bucket",method = RequestMethod.GET)
+    @RequestMapping(value = "/bucket", method = RequestMethod.GET)
     public String initBucketForm(Model model) {
         model.addAttribute("products", Bucket.getINSTANCE().getProducts());
         return "bucket";
     }
 
-    @RequestMapping(value = "/bucket/{id}",method = RequestMethod.GET)
-    public String  addToBucket(@PathVariable("id") int id){
+    @RequestMapping(value = "/bucket/{id}", method = RequestMethod.GET)
+    public String addToBucket(@PathVariable("id") int id) {
         Bucket.getINSTANCE().delete(productService.getProductById(id));
         return "redirect:/bucket";
     }
 
-    @RequestMapping(value = "/order",method = RequestMethod.POST)
-    public String  initOrder(Model model){
+    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    public String initOrder(Model model) {
         List<Product> products = Bucket.getINSTANCE().getProducts();
         productService.updateAmount(products);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        orderService.add(Bucket.getINSTANCE().getProducts(),userDao.getUser(auth.getName()));
+        orderService.add(products, userDao.getUser(auth.getName()));
         model.addAttribute("products", products);
         return "order";
+    }
 
+    @RequestMapping(value = "/cleanBucket", method = RequestMethod.GET)
+    public String cleanBucket() {
+        Bucket.getINSTANCE().clear();
+        return "redirect:/public/products";
     }
 }

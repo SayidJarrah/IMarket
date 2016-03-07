@@ -75,7 +75,5 @@ public class ProductController {
         Bucket.getINSTANCE().add(productService.getProductById(id));
         return "redirect:/public/products";
     }
+    }
 
-
-
-}
