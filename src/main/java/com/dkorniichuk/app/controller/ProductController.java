@@ -43,37 +43,50 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String submitSearch(HttpServletRequest request,Model model) throws IOException {
+    public String submitSearch(HttpServletRequest request, Model model) throws IOException {
         String keyword = request.getParameter("keyword");
-        model.addAttribute("products",productService.search(keyword));
+        model.addAttribute("products", productService.search(keyword));
         return "search";
     }
 
     @RequestMapping(value = "/admin/edit")
-    public String initEdit(Model model,HttpServletRequest request){
+    public String initEdit(Model model, HttpServletRequest request) {
         String id = request.getParameter("id");
-        model.addAttribute("product",productService.getProductById(Integer.parseInt(id)));
+        model.addAttribute("product", productService.getProductById(Integer.parseInt(id)));
         model.addAttribute("categories", categoryService.getAllCategory());
         return "edit";
     }
+
     @RequestMapping(value = "/admin/edit", method = RequestMethod.POST)
-    public String submitEdit(Product product, Model model){
-        model.addAttribute("product",product);
+    public String submitEdit(Product product, Model model) {
+        model.addAttribute("product", product);
         System.out.println(product);
         productService.update(product);
         return "redirect:/public/products.html";
     }
 
-    @RequestMapping(value = "/admin/search/{id}",method = RequestMethod.GET)
-    public String removeProduct(@PathVariable("id") int id){
+    @RequestMapping(value = "/admin/search/{id}", method = RequestMethod.GET)
+    public String removeProduct(@PathVariable("id") int id) {
         productService.delete(id);
         return "redirect:/search.html";
     }
 
-    @RequestMapping(value = "/public/products/{id}",method = RequestMethod.GET)
-    public String  addToBucket(@PathVariable("id") int id){
+    @RequestMapping(value = "/public/products/{id}", method = RequestMethod.GET)
+    public String addToBucket(@PathVariable("id") int id) {
         Bucket.getINSTANCE().add(productService.getProductById(id));
         return "redirect:/public/products";
     }
+
+     @RequestMapping(value = "/public/products/sortAsc", method = RequestMethod.POST)
+    public String sortAsc(Model model){
+         model.addAttribute("products", productService.sortByPriceAsc(productService.getAllProducts()));
+         return "products";
+     }
+
+    @RequestMapping(value = "/public/products/sortDesc", method = RequestMethod.POST)
+    public String sortDesc(Model model){
+        model.addAttribute("products", productService.sortByPriceDesc(productService.getAllProducts()));
+        return "products";
     }
+}
 

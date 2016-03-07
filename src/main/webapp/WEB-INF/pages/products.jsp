@@ -6,6 +6,15 @@
     <title>All Products</title>
 </head>
 <body>
+
+<form action="/public/products/sortAsc" method="post">
+    <input type="submit" value="Sort by price asc">
+</form>
+
+<form action="/public/products/sortDesc" method="post">
+    <input type="submit" value="Sort by price desc">
+</form>
+
 <table style="border : 2px solid black">
     <caption>Products</caption>
     <tr>

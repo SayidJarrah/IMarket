@@ -22,4 +22,8 @@ public interface ProductService {
     public void delete(int productId);
 
     public void updateAmount(List<Product> products);
+
+    public List<Product> sortByPriceAsc(List<Product> products);
+
+    public List<Product> sortByPriceDesc(List<Product> products);
 }

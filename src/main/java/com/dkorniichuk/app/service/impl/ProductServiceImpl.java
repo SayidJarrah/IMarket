@@ -5,10 +5,12 @@ import com.dkorniichuk.app.dao.impl.ProductDaoImpl;
 import com.dkorniichuk.app.entity.Product;
 import com.dkorniichuk.app.service.ProductCategoryService;
 import com.dkorniichuk.app.service.ProductService;
+import com.dkorniichuk.app.service.util.PriceComparator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -66,6 +68,18 @@ public class ProductServiceImpl implements ProductService {
         for (Product product : products) {
             productDao.updateAmount(product);
         }
+    }
+
+    @Override
+    public List<Product> sortByPriceAsc(List<Product> products) {
+        Collections.sort(products, new PriceComparator());
+        return products;
+    }
+
+    @Override
+    public List<Product> sortByPriceDesc(List<Product> products) {
+        Collections.sort(products, new PriceComparator().reversed());
+        return products;
     }
 
 
