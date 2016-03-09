@@ -19,21 +19,21 @@
 
 	<br>
 	<br>
-	<a href="/login.html">LOG IN </a>
+	<a href="/login">LOG IN </a>
 	<br>
-	<a href="/registration.html">SIGN UP </a>
+	<a href="/registration">SIGN UP </a>
 	<br>
 	<a href="/profile">USER PROFILE</a>
 	<br>
-	<a href="/public/products.html">VIEW ALL PRODUCTS... </a>
+	<a href="/public/products">VIEW ALL PRODUCTS... </a>
 	<br>
-	<a href="/admin/addNewProduct.html">ADD NEW PRODUCT </a>
+	<a href="/admin/addNewProduct">ADD NEW PRODUCT </a>
 	<br>
-	<a href="/admin/addNewCategory.html">ADD NEW CATEGORY </a>
+	<a href="/admin/addNewCategory">ADD NEW CATEGORY </a>
 	<br>
-	<a href="/search.html">SEARCH PRODUCT</a>
+	<a href="/search">SEARCH PRODUCT</a>
 	<br>
-	<a href="/bucket.html">CHECK OUT</a>
+	<a href="/bucket">CHECK OUT</a>
 </form:form>
 </h3>
 

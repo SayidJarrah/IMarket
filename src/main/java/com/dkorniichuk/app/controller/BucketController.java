@@ -1,10 +1,10 @@
 package com.dkorniichuk.app.controller;
 
-import com.dkorniichuk.app.dao.UserDao;
-import com.dkorniichuk.app.entity.Bucket;
 import com.dkorniichuk.app.entity.Product;
+import com.dkorniichuk.app.service.BucketService;
 import com.dkorniichuk.app.service.OrderService;
 import com.dkorniichuk.app.service.ProductService;
+import com.dkorniichuk.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,34 +23,36 @@ public class BucketController {
     @Autowired
     private OrderService orderService;
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
+    @Autowired
+    private BucketService bucketService;
 
 
     @RequestMapping(value = "/bucket", method = RequestMethod.GET)
     public String initBucketForm(Model model) {
-        model.addAttribute("products", Bucket.getINSTANCE().getProducts());
+        model.addAttribute("products", bucketService.get());
         return "bucket";
     }
 
     @RequestMapping(value = "/bucket/{id}", method = RequestMethod.GET)
     public String addToBucket(@PathVariable("id") int id) {
-        Bucket.getINSTANCE().delete(productService.getProductById(id));
+        bucketService.delete(productService.getProductById(id));
         return "redirect:/bucket";
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String initOrder(Model model) {
-        List<Product> products = Bucket.getINSTANCE().getProducts();
+        List<Product> products = bucketService.get();
         productService.updateAmount(products);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        orderService.add(products, userDao.getUser(auth.getName()));
+        orderService.add(products, userService.get(auth.getName()));
         model.addAttribute("products", products);
         return "order";
     }
 
     @RequestMapping(value = "/cleanBucket", method = RequestMethod.GET)
     public String cleanBucket() {
-        Bucket.getINSTANCE().clear();
+        bucketService.clear();
         return "redirect:/public/products";
     }
 }

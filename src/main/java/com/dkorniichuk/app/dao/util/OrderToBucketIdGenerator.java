@@ -5,7 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ActualOrderToBucketIdGenerator {
+public class OrderToBucketIdGenerator {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private static final String SQL_SELECT_LAST_ID = "SELECT MAX(id_order) FROM IMarket.order";

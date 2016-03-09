@@ -42,7 +42,6 @@ public class UserController {
     public String initPurchaseHistory(Model model) {
         String login = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("orders", orderService.getByUser(userService.get(login)));
-        System.out.println(orderService.getByUser(userService.get(login)));
         return "history";
     }
 

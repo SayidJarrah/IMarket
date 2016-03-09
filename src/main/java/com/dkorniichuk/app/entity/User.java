@@ -1,10 +1,7 @@
 package com.dkorniichuk.app.entity;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Date;
 
-@Component
 public class User {
     private int id;
     private String login;

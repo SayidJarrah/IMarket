@@ -5,12 +5,12 @@ import com.dkorniichuk.app.entity.User;
 import com.dkorniichuk.app.entity.UserRole;
 import com.dkorniichuk.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserDaoImpl userDao;
+    private UserDaoImpl userDao;
 
     @Override
     public User get(String login) {

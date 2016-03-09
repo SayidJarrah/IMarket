@@ -1,6 +1,6 @@
 package com.dkorniichuk.app.dao.util;
 
-import com.dkorniichuk.app.dao.impl.ProductCategoryDaoImpl;
+import com.dkorniichuk.app.dao.ProductCategoryDao;
 import com.dkorniichuk.app.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
@@ -10,9 +10,9 @@ import java.sql.SQLException;
 
 public class ProductRowMapper implements RowMapper<Product>{
 @Autowired
-    private ProductCategoryDaoImpl productCategoryDao;
+    private ProductCategoryDao productCategoryDao;
 
-    public ProductRowMapper(ProductCategoryDaoImpl productCategoryDao) {
+    public ProductRowMapper(ProductCategoryDao productCategoryDao) {
         this.productCategoryDao = productCategoryDao;
     }
 

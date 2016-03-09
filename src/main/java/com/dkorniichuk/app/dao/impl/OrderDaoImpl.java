@@ -1,32 +1,34 @@
 package com.dkorniichuk.app.dao.impl;
 
 import com.dkorniichuk.app.dao.OrderDao;
-import com.dkorniichuk.app.dao.util.ActualOrderToBucketIdGenerator;
+import com.dkorniichuk.app.dao.ProductDao;
+import com.dkorniichuk.app.dao.UserDao;
+import com.dkorniichuk.app.dao.util.OrderToBucketIdGenerator;
 import com.dkorniichuk.app.dao.util.OrderRowMapper;
 import com.dkorniichuk.app.entity.Order;
 import com.dkorniichuk.app.entity.Product;
 import com.dkorniichuk.app.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Component
+@Repository
 public class OrderDaoImpl implements OrderDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Autowired
-    private ActualOrderToBucketIdGenerator generator;
+    private OrderToBucketIdGenerator generator;
     @Autowired
-    private UserDaoImpl userDao;
+    private UserDao userDao;
     @Autowired
-    private ProductDaoImpl productDao;
+    private ProductDao productDao;
 
-    private static final String SQL_INSERT_NEW_ORDER = "INSERT INTO IMarket.order (id_order,id_user,order_date) VALUES(?,?,?)";
-    private static final String SQL_INSERT_NEW_BUCKET = "INSERT INTO bucket (id_order,id_product) VALUES(?,?)";
-    private static final String SQL_FOR_HISTORY = " SELECT * FROM imarket.user us" +
+    private static final String INSERT_NEW_ORDER_SQL = "INSERT INTO IMarket.order (id_order,id_user,order_date) VALUES(?,?,?)";
+    private static final String INSERT_NEW_BUCKET_SQL = "INSERT INTO bucket (id_order,id_product) VALUES(?,?)";
+    private static final String FOR_HISTORY_SQL = " SELECT * FROM imarket.user us" +
             "    JOIN imarket.order ord" +
             "    ON us.id_user=ord.id_user" +
             "    JOIN imarket.bucket bu" +
@@ -38,15 +40,15 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public void add(List<Product> products, User user) {
         int id = generator.getActualOrderId();
-        jdbcTemplate.update(SQL_INSERT_NEW_ORDER, new Object[]{id, user.getId(), LocalDateTime.now()});
+        jdbcTemplate.update(INSERT_NEW_ORDER_SQL, id, user.getId(), LocalDateTime.now());
         for (Product product : products) {
-            jdbcTemplate.update(SQL_INSERT_NEW_BUCKET, new Object[]{id, product.getId()});
+            jdbcTemplate.update(INSERT_NEW_BUCKET_SQL, id, product.getId());
         }
     }
 
     @Override
     public List<Order> getByUser(User user) {
-        return jdbcTemplate.query(SQL_FOR_HISTORY, new Object[]{user.getLogin()}, new OrderRowMapper(userDao, productDao));
+        return jdbcTemplate.query(FOR_HISTORY_SQL, new Object[]{user.getLogin()}, new OrderRowMapper(userDao, productDao));
     }
 
     @Override

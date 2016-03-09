@@ -12,7 +12,7 @@ import java.io.IOException;
 
 
 @Controller
-@RequestMapping("/admin/addNewCategory.html")
+@RequestMapping("/admin/addNewCategory")
 public class NewCategoryController {
     @Autowired
     private ProductCategoryService categoryService;

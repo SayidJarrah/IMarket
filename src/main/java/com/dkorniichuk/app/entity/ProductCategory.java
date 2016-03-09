@@ -1,10 +1,7 @@
 package com.dkorniichuk.app.entity;
 
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDateTime;
 
-@Component
 public class ProductCategory {
     private int id;
     private String name;

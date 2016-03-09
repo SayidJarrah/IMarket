@@ -7,13 +7,13 @@ import com.dkorniichuk.app.service.ProductCategoryService;
 import com.dkorniichuk.app.service.ProductService;
 import com.dkorniichuk.app.service.util.PriceComparator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
-@Component
+@Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductDao productDao;

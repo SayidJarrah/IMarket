@@ -6,11 +6,11 @@ import com.dkorniichuk.app.entity.Product;
 import com.dkorniichuk.app.entity.User;
 import com.dkorniichuk.app.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderDao orderDao;

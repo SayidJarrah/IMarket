@@ -1,8 +1,8 @@
 package com.dkorniichuk.app.controller;
 
 
-import com.dkorniichuk.app.entity.Bucket;
 import com.dkorniichuk.app.entity.Product;
+import com.dkorniichuk.app.service.BucketService;
 import com.dkorniichuk.app.service.ProductCategoryService;
 import com.dkorniichuk.app.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +23,9 @@ public class ProductController {
 
     @Autowired
     private ProductCategoryService categoryService;
+
+    @Autowired
+    private BucketService bucketService;
 
     @RequestMapping("/public/products")
     public String initAllProductsForm(Model model) {
@@ -73,7 +76,7 @@ public class ProductController {
 
     @RequestMapping(value = "/public/products/{id}", method = RequestMethod.GET)
     public String addToBucket(@PathVariable("id") int id) {
-        Bucket.getINSTANCE().add(productService.getProductById(id));
+       bucketService.add(productService.getProductById(id));
         return "redirect:/public/products";
     }
 
