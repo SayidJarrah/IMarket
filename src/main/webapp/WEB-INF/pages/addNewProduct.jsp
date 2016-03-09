@@ -6,10 +6,11 @@
 <html>
 <head>
     <title>Add new product</title>
+
 </head>
 <body>
 
-<sf:form method="post" modelAttribute="product" enctype="multipart/form-data">
+<sf:form method="post" modelAttribute="product" id="newProductForm" enctype="multipart/form-data">
     <fieldset>
         <table cellspacing="0">
             <th><label for="product_category">Product category</label></th>

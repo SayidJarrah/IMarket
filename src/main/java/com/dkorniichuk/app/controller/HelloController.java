@@ -34,6 +34,11 @@ public class HelloController {
         return model;
     }
 
+    @RequestMapping( value = "/logout", method = RequestMethod.GET)
+    public String logout(Model model){
+        return "login";
+    }
+
    /* @RequestMapping(value = "/admin**", method = RequestMethod.GET)
     public ModelAndView adminPage() {
 

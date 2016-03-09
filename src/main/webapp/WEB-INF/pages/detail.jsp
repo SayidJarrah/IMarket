@@ -3,24 +3,54 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
-  <title>Detail</title>
-
+    <title>Product - ${product.name}</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href='<c:url value="/resources/css/styles.css" />' type="text/css" media="screen"/>
 </head>
 <body>
-<img height="200px" width="200px" src="/public/imageDisplay?id=${product.id}"/>
-<br>
-<b>Name: </b><p>${product.name}</p>
-<b>Category: </b><p>${product.category.name}</p>
-<b>Description:  </b><p>${product.description}</p>
-<b>Price: </b><p>${product.price}</p>
 
-<form method="get" action="/public/products/${product.id}">
-  <td><input type="submit" onclick="location.href='/public/products/${product.id}" value="Buy"></td>
-</form>
+<section>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>IMarket</h1>
+            <p>${product.name}</p>
+        </div>
+    </div>
+</section>
 
-<form action="/public/products">
-  <td><input type="submit" href='/public/products' value="More purchases!"></td>
-</form>
+<section class="container">
 
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/public/imageDisplay?id=${product.id}" class="single-img"/>
+        </div>
+        <div class="col-md-6">
+
+            <h3>${product.name}</h3>
+
+            <p>${product.description}</p>
+
+            <p>
+                <strong>Category:</strong> ${product.category.name}
+            </p>
+
+            <p>
+                <strong>Price:</strong> ${product.price}
+            </p>
+
+            <p>
+                <strong>Available units on stock:</strong> ${product.availableAmount}
+            </p>
+
+            <form method="get" action="/public/products/${product.id}">
+                <td><input type="submit" onclick="location.href='/public/products/${product.id}" value="Buy"></td>
+            </form>
+
+            <form action="/public/products">
+                <td><input type="submit" href='/public/products' value="More purchases!"></td>
+            </form>
+            </div>
+        </div>
+</section>
 </body>
 </html>

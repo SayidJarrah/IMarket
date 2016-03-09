@@ -5,7 +5,15 @@
     <title>My bucket</title>
 </head>
 <body>
+<section>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Cart</h1>
 
+            <p>All the selected products in your cart</p>
+        </div>
+    </div>
+</section>
 <table style="border : 2px solid black">
     <c:forEach items="${products}" var="product">
         <tr>
