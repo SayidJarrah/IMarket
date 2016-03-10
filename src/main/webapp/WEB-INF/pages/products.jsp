@@ -32,23 +32,22 @@
                     <a href="<spring:url value="/logout" />"
                        class="btn btn-danger btn-mini pull-right">
                         <span class="glyphicon glyphicon-off"></span> logout</a>
+                    <a href='<c:url value="/bucket" />' class="btn btn-warning pull-right"> <span
+                            class="glyphicon-shopping-cart glyphicon"></span> bucket</a>
                 </c:when>
                 <c:otherwise>
                     <div>
                         <p class="pull-right"> Welcome, Guest!</p>
                         <br>
-                        <a href='<c:url value="/login" />' class="btn btn-default pull-right"> <span
+                        <a href='<c:url value="/login" />' class="btn btn-primary pull-right"> <span
                                 class="glyphicon glyphicon-download-alt"></span> login</a>
                     </div>
                     <div>
                         <a href='<c:url value="/registration" />' class="btn btn-success pull-right"> <span
-                                class="glyphicon glyphicon-download-alt"></span> sign up</a>
+                                class="glyphicon glyphicon-plus"></span> sign up</a>
                     </div>
                 </c:otherwise>
             </c:choose>
-            <a href='<c:url value="/bucket" />' class="btn btn-warning pull-right"> <span
-                    class="glyphicon-shopping-cart glyphicon"></span> bucket</a>
-
             <h1>IMarket</h1>
         </div>
     </div>

@@ -43,7 +43,11 @@
                                 <td><input class="form-control" type='password' name='password'/></td>
                             </div>
                             <input class="btn btn-lg btn-success btn-block" name="submit" type="submit"
-                                   value="submit"/>
+                                   value="log in"/>
+                            <div>
+                                <a href='<c:url value="/registration" />' class="btn btn-lg btn-primary btn-block myMargin">sign up</a>
+                            </div>
+
                         </fieldset>
 
                         <input type="hidden" name="${_csrf.parameterName}"

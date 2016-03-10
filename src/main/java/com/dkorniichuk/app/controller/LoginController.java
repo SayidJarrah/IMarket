@@ -1,5 +1,7 @@
 package com.dkorniichuk.app.controller;
 
+import com.dkorniichuk.app.service.BucketService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -15,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping(value = "/")
 public class LoginController {
+    @Autowired
+    private BucketService bucketService;
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(
             @RequestParam(value = "error", required = false) String error,
@@ -36,6 +41,7 @@ public class LoginController {
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        bucketService.clear();
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }

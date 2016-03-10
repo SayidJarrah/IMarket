@@ -11,7 +11,7 @@ public class User {
     private String password;
     private String address;
     private String city;
-    private long phone;
+    private String phone;
     private Date registrationDate;
     private UserRole role;
 
@@ -82,11 +82,11 @@ public class User {
         this.city = city;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
