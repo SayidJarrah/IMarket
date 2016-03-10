@@ -74,12 +74,6 @@ public class ProductController {
         return "redirect:/search.html";
     }
 
-    @RequestMapping(value = "/public/products/{id}", method = RequestMethod.GET)
-    public String addToBucket(@PathVariable("id") int id) {
-       bucketService.add(productService.getProductById(id));
-        return "redirect:/public/products";
-    }
-
      @RequestMapping(value = "/public/products/sortAsc", method = RequestMethod.POST)
     public String sortAsc(Model model){
          model.addAttribute("products", productService.sortByPriceAsc(productService.getAllProducts()));

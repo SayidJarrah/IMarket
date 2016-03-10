@@ -29,3 +29,15 @@ function display(data) {
         + JSON.stringify(data, null, 4) + "</pre>";
     $('#feedback').html(json);
 }
+
+function putToBucketAjaxPost(id) {
+    $.ajax({
+        type: "POST",
+        url: "/bucket",
+        data: "id="+id,
+
+        success: function (response) {
+            $('#feedback').html(response);
+        }
+    })
+}

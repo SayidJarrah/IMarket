@@ -5,11 +5,13 @@
 
 
 <head>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <spring:url value="/resources/css/styles.css" var="mainCss" />
-    <link href="${mainCss}" rel="stylesheet" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <title>Products</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <spring:url value="/resources/theme1/css/styles.css" var="mainCss"/>
+    <spring:url value="/resources/theme1/js/main.js" var="mainJs"/>
+    <link href="${mainCss}" rel="stylesheet"/>
+    <script type="text/javascript" src="${mainJs}"></script>
 
 </head>
 <body>
@@ -19,6 +21,10 @@
             <c:choose>
                 <c:when test="${pageContext.request.userPrincipal.name != null}">
                     <p class="pull-right"> Welcome, ${pageContext.request.userPrincipal.name} !</p>
+                    <br>
+
+                    <div style="font-size: small" class="pull-right" id="feedback"></div>
+                    <div style="font-size: small" class="pull-right"> Currently in Your bucket:</div>
                     <br>
                     <a href="<spring:url value="/j_spring_security_logout " />"
                        class="btn btn-default btn-mini pull-right">
@@ -33,11 +39,9 @@
                     </div>
                 </c:otherwise>
             </c:choose>
-
-            <a href='<c:url value="/public/products/${product.id}" />' class="btn btn-default pull-right"> <span
-                    class="glyphicon-plus-sign glyphicon"></span> add product</a>
             <a href='<c:url value="/bucket" />' class="btn btn-default pull-right"> <span
                     class="glyphicon-shopping-cart glyphicon"></span> bucket</a>
+
             <h1>IMarket</h1>
         </div>
     </div>
@@ -60,16 +64,17 @@
                         <p>
                             <a href="<spring:url value="/public/detail?id=${product.id}" />" class="btn btn-primary">
                                 <span class="glyphicon-info-sign glyphicon"> </span> Details</a>
-
-                            <a href="<spring:url value="/public/products/${product.id}" />"
-                               class="btn btn-warning btn-large">
-                                <span class="glyphicon-shopping-cart glyphicon"> </span> Add </a>
-
-                        <form method="get" action="/public/products/${product.id}">
-                            <td><input type="submit" class="btn btn-primary glyphicon-shopping-cart glyphicon"
-                                       onclick="location.href='/public/products/${product.id}" value="Buy"></td>
-                        </form>
-                        <input type="button" value="OK" onclick="doAjax()">
+                            <c:choose>
+                                <c:when test="${pageContext.request.userPrincipal.name != null}">
+                                    <input type="button" class="btn btn-warning btn-large" value="Add"
+                                           onclick="putToBucketAjaxPost(${product.id})">
+                                    <!--glyphicon-shopping-cart glyphicon-->
+                                </c:when>
+                                <c:otherwise>
+                                    <input type="button" class="btn btn-warning btn-large" value="Add"
+                                           onclick="window.location.href='/login'" />
+                                </c:otherwise>
+                            </c:choose>
                         </p>
                     </div>
                 </div>

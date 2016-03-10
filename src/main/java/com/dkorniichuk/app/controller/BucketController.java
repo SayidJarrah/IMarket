@@ -13,7 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -35,7 +37,7 @@ public class BucketController {
     }
 
     @RequestMapping(value = "/bucket/{id}", method = RequestMethod.GET)
-    public String addToBucket(@PathVariable("id") int id) {
+    public String deleteFromBucket(@PathVariable("id") int id) {
         bucketService.delete(productService.getProductById(id));
         return "redirect:/bucket";
     }
@@ -54,5 +56,12 @@ public class BucketController {
     public String cleanBucket() {
         bucketService.clear();
         return "redirect:/public/products";
+    }
+
+
+    @RequestMapping(value = "/bucket",method = RequestMethod.POST)
+    public @ResponseBody Integer addToBucket(HttpServletRequest request) {
+        bucketService.add(productService.getProductById(Integer.parseInt(request.getParameter("id"))));
+        return bucketService.get().size();
     }
 }
