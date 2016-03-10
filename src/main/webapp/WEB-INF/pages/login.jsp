@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Login Page</title>
-    <spring:url value="/resources/css/styles.css" var="mainCss" />
+    <spring:url value="/resources/theme1/css/styles.css" var="mainCss" />
     <link href="${mainCss}" rel="stylesheet" />
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
@@ -12,8 +13,6 @@
     <div class="jumbotron">
         <div class="container">
             <h1>IMarket</h1>
-
-            <p>Add products</p>
         </div>
     </div>
 </section>
@@ -38,13 +37,13 @@
 
                             <div class="form-group">
                                 <input class="form-control" placeholder="User Name" type='text' name='username'
-                                       value=''></td>
+                                       value=''>
                             </div>
                             <div class="form-group">
                                 <td><input class="form-control" type='password' name='password'/></td>
                             </div>
                             <input class="btn btn-lg btn-success btn-block" name="submit" type="submit"
-                                   value="submit"/></td>
+                                   value="submit"/>
                         </fieldset>
 
                         <input type="hidden" name="${_csrf.parameterName}"

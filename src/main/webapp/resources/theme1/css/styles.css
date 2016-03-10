@@ -1,7 +1,19 @@
 
-
 .jumbotron {
     background-color: lightgrey;
     padding-top: 0%;
     padding-bottom: 0%;
+}
+
+table, td {
+    border: 1px solid black;
+    text-align: left;
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+th {
+    border: 1px solid black;
+    text-align: center;
+    padding: 15px
 }

@@ -27,13 +27,13 @@ public class ProductController {
     @Autowired
     private BucketService bucketService;
 
-    @RequestMapping("/public/products")
+    @RequestMapping(value={"/","/products"})
     public String initAllProductsForm(Model model) {
         model.addAttribute("products", productService.getAllProducts());
         return "products";
     }
 
-    @RequestMapping(value = "/public/detail", method = RequestMethod.GET)
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public String showProductDetails(@RequestParam("id") Integer id, Model model) throws IOException {
         Product product = productService.getProductById(id);
         model.addAttribute(product);
@@ -65,7 +65,7 @@ public class ProductController {
         model.addAttribute("product", product);
         System.out.println(product);
         productService.update(product);
-        return "redirect:/public/products.html";
+        return "redirect:/products.html";
     }
 
     @RequestMapping(value = "/admin/search/{id}", method = RequestMethod.GET)
@@ -74,13 +74,13 @@ public class ProductController {
         return "redirect:/search.html";
     }
 
-     @RequestMapping(value = "/public/products/sortAsc", method = RequestMethod.POST)
+     @RequestMapping(value = "/products/sortAsc", method = RequestMethod.POST)
     public String sortAsc(Model model){
          model.addAttribute("products", productService.sortByPriceAsc(productService.getAllProducts()));
          return "products";
      }
 
-    @RequestMapping(value = "/public/products/sortDesc", method = RequestMethod.POST)
+    @RequestMapping(value = "/products/sortDesc", method = RequestMethod.POST)
     public String sortDesc(Model model){
         model.addAttribute("products", productService.sortByPriceDesc(productService.getAllProducts()));
         return "products";

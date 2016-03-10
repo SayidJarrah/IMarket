@@ -31,7 +31,7 @@ public class BucketController {
 
 
     @RequestMapping(value = "/bucket", method = RequestMethod.GET)
-    public String initBucketForm(Model model) {
+    public String initBucket(Model model) {
         model.addAttribute("products", bucketService.get());
         return "bucket";
     }
@@ -55,7 +55,7 @@ public class BucketController {
     @RequestMapping(value = "/cleanBucket", method = RequestMethod.GET)
     public String cleanBucket() {
         bucketService.clear();
-        return "redirect:/public/products";
+        return "redirect:/products";
     }
 
 

@@ -24,9 +24,9 @@
                     <div style="font-size: small" class="pull-right" id="feedback"></div>
                     <div style="font-size: small" class="pull-right"> Currently in Your bucket:</div>
                     <br>
-                    <a href="<spring:url value="/j_spring_security_logout " />"
-                       class="btn btn-default btn-mini pull-right">
-                        <span class="glyphicon-log-out glyphicon"></span> logout</a>
+                    <a href="<spring:url value="/logout" />"
+                       class="btn btn-danger btn-mini pull-right">
+                        <span class="glyphicon glyphicon-off"></span> logout</a>
                 </c:when>
                 <c:otherwise>
                     <div>
@@ -49,7 +49,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <img src="/public/imageDisplay?id=${product.id}" class="single-img"/>
+            <img src="/imageDisplay?id=${product.id}" class="single-img"/>
         </div>
         <div class="col-md-6">
 
@@ -79,8 +79,8 @@
                            onclick="window.location.href='/login'"/>
                 </c:otherwise>
             </c:choose>
-            <form action="/public/products">
-                <td><input type="submit" class="btn btn-info btn-large" href='/public/products' value="back">
+            <form action="/products">
+                <td><input type="submit" class="btn btn-info btn-large" href='/products' value="back">
                 </td>
             </form>
 

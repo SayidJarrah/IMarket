@@ -25,7 +25,7 @@
                 <td> ${product.category.name}</td>
                 <td> ${product.availableAmount}</td>
                 <td> ${product.appearanceDate}</td>
-                <td><img height="90px" width="90px" src="/public/imageDisplay?id=${product.id}"/></td>
+                <td><img height="90px" width="90px" src="/imageDisplay?id=${product.id}"/></td>
                 <input type="hidden" name="id" value="${product.id}">
             <form action="/admin/edit" method="get">
                 <td><input type="submit" name="edit" value="edit"></td>

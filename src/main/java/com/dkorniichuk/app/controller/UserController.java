@@ -28,7 +28,7 @@ public class UserController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String submitRegistration(User user) throws IOException {
         userService.add(user);
-        return "hello";
+        return "products";
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)

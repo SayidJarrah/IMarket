@@ -26,9 +26,12 @@
                     <div style="font-size: small" class="pull-right" id="feedback"></div>
                     <div style="font-size: small" class="pull-right"> Currently in Your bucket:</div>
                     <br>
-                    <a href="<spring:url value="/j_spring_security_logout " />"
-                       class="btn btn-default btn-mini pull-right">
-                        <span class="glyphicon-log-out glyphicon"></span> logout</a>
+                    <a href='<c:url value="/profile" />' class="btn btn-primary pull-right"> <span
+                            class="glyphicon glyphicon-list-alt"></span> Profile</a>
+
+                    <a href="<spring:url value="/logout" />"
+                       class="btn btn-danger btn-mini pull-right">
+                        <span class="glyphicon glyphicon-off"></span> logout</a>
                 </c:when>
                 <c:otherwise>
                     <div>
@@ -37,9 +40,13 @@
                         <a href='<c:url value="/login" />' class="btn btn-default pull-right"> <span
                                 class="glyphicon glyphicon-download-alt"></span> login</a>
                     </div>
+                    <div>
+                        <a href='<c:url value="/registration" />' class="btn btn-success pull-right"> <span
+                                class="glyphicon glyphicon-download-alt"></span> sign up</a>
+                    </div>
                 </c:otherwise>
             </c:choose>
-            <a href='<c:url value="/bucket" />' class="btn btn-default pull-right"> <span
+            <a href='<c:url value="/bucket" />' class="btn btn-warning pull-right"> <span
                     class="glyphicon-shopping-cart glyphicon"></span> bucket</a>
 
             <h1>IMarket</h1>
@@ -53,7 +60,7 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h3> ${product.name}</h3>
-                        <img height="140px" width="140px" src="/public/imageDisplay?id=${product.id}"/>
+                        <img height="140px" width="140px" src="/imageDisplay?id=${product.id}"/>
                         </a>
                         <p>Price : ${product.price}</p>
 
@@ -62,7 +69,7 @@
                         <p>Available : ${product.availableAmount}</p>
 
                         <p>
-                            <a href="<spring:url value="/public/detail?id=${product.id}" />" class="btn btn-primary">
+                            <a href="<spring:url value="/detail?id=${product.id}" />" class="btn btn-primary">
                                 <span class="glyphicon-info-sign glyphicon"> </span> Details</a>
                             <c:choose>
                                 <c:when test="${pageContext.request.userPrincipal.name != null}">
@@ -83,13 +90,22 @@
     </div>
 </section>
 <
-<form action="/public/products/sortAsc" method="post">
+<form action="/products/sortAsc" method="post">
     <input type="submit" value="Sort by price asc">
 </form>
 
-<form action="/public/products/sortDesc" method="post">
+<form action="/products/sortDesc" method="post">
     <input type="submit" value="Sort by price desc">
 </form>
+
+
+<a href="/admin/addNewProduct">ADD NEW PRODUCT </a>
+<br>
+<a href="/admin/addNewCategory">ADD NEW CATEGORY </a>
+<br>
+<a href="/search">SEARCH PRODUCT</a>
+<br>
+<a href="/bucket">CHECK OUT</a>
 
 
 </body>

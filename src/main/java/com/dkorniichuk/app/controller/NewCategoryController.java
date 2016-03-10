@@ -27,12 +27,10 @@ public class NewCategoryController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody ProductCategory addCategory(@RequestBody ProductCategory category) throws IOException {
-        String returnText;
-
-            categoryService.save(category);
-            returnText = "User has been added to the list. Total number of users are ";
-
+    public
+    @ResponseBody
+    ProductCategory addCategory(@RequestBody ProductCategory category) throws IOException {
+        categoryService.save(category);
         return category;
     }
 }
