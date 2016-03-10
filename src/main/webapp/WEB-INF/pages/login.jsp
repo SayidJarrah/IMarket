@@ -2,8 +2,9 @@
 <html>
 <head>
     <title>Login Page</title>
-    <link rel="stylesheet"
-          href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <spring:url value="/resources/css/styles.css" var="mainCss" />
+    <link href="${mainCss}" rel="stylesheet" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body onload='document.loginForm.username.focus();'>
 

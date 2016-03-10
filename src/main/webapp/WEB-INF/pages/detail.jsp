@@ -5,7 +5,8 @@
 <head>
     <title>Product - ${product.name}</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href='<c:url value="/resources/css/styles.css" />' type="text/css" media="screen"/>
+    <spring:url value="/resources/css/styles.css" var="mainCss" />
+    <link href="${mainCss}" rel="stylesheet" />
 </head>
 <body>
 

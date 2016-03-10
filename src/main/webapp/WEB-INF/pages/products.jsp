@@ -2,16 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="<c:url value="/resources/css/styles.css" />" type="text/css">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
 <head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <spring:url value="/resources/css/styles.css" var="mainCss" />
+    <link href="${mainCss}" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <title>Products</title>
-    <script type="text/JavaScript"
-            src="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js">
-    </script>
 
 </head>
 <body>
