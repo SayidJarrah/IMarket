@@ -21,6 +21,8 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductCategoryService categoryService;
 
+    private byte[] temporaryRepoForImage;
+
     public void setProductDao(ProductDaoImpl productDao) {
         this.productDao = productDao;
     }
@@ -82,5 +84,21 @@ public class ProductServiceImpl implements ProductService {
         return products;
     }
 
+    public byte[] getTemporaryRepoForImage() {
+        return temporaryRepoForImage;
+    }
 
+    public void setTemporaryRepoForImage(byte[] temporaryRepoForImage) {
+        this.temporaryRepoForImage = temporaryRepoForImage;
+    }
+
+    @Override
+    public void saveImageToTemporaryRepo(byte[] image) {
+        setTemporaryRepoForImage(image);
+    }
+
+    @Override
+    public byte[] loadImageFromTemporaryRepo() {
+        return getTemporaryRepoForImage();
+    }
 }

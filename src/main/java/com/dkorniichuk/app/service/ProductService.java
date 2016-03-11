@@ -26,4 +26,8 @@ public interface ProductService {
     public List<Product> sortByPriceAsc(List<Product> products);
 
     public List<Product> sortByPriceDesc(List<Product> products);
+
+    public void saveImageToTemporaryRepo(byte[] image);
+
+    public byte[] loadImageFromTemporaryRepo();
 }

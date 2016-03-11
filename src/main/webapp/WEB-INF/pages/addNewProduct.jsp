@@ -6,7 +6,11 @@
 <html>
 <head>
     <title>Add new product</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <spring:url value="/resources/theme1/css/styles.css" var="mainCss" />
+    <spring:url value="/resources/theme1/js/main.js" var="mainJs" />
+    <link href="${mainCss}" rel="stylesheet" />
+    <script type="text/javascript" src="${mainJs}"></script>
 </head>
 <body>
 
@@ -37,8 +41,8 @@
             </tr>
 
             <tr>
-                <th><label for="amount">Product amount : </label></th>
-                <td><sf:input path="availableAmount" id="amount"/></td>
+                <th><label for="product_amount">Product amount : </label></th>
+                <td><sf:input path="availableAmount" id="product_amount"/></td>
             </tr>
 
             <tr>
@@ -49,13 +53,15 @@
             <tr>
                 <th><label for="image">Product image : </label></th>
                 <td><input type="file" name="file" id="image"/>
+
+
             </tr>
         </table>
     </fieldset>
-    <input type="submit" value="Add"/>
 </sf:form>
+<input type="button" value="submit" onclick="newProductDoAjaxPost()">
 
-
+<div id="feedback"></div>
 
 </body>
 </html>

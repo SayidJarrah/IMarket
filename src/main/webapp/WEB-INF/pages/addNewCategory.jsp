@@ -18,7 +18,7 @@
 <label for="category_description">Category description : </label>
 <input name="description" id="category_description"/>
 
-<input type="button" value="NEW!!! Add Users" onclick="newCategoryDoAjaxPost()">
+<input type="button" value="submit" onclick="newCategoryDoAjaxPost()">
 
 
 <div id="feedback"></div>

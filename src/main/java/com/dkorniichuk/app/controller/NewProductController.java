@@ -6,10 +6,10 @@ import com.dkorniichuk.app.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 
@@ -23,23 +23,21 @@ public class NewProductController {
     ProductService productService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String initProductForm(Model model){
+    public String initProductForm(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("categories", categoryService.getAllCategory());
         return "addNewProduct";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String submitProductForm(Model model, Product product, @RequestParam("file") MultipartFile file) throws IOException {
-        model.addAttribute("product",product);
-        productService.binding(product);
-        product.setImage(file.getBytes());
+    public
+    @ResponseBody
+    Product addProduct(@RequestBody Product product) throws IOException {
         System.out.println(product);
+        productService.binding(product);
+        product.setImage(productService.loadImageFromTemporaryRepo());
+        System.out.println(product.getImage());
         productService.save(product);
-        return "redirect:/products";
+        return product;
     }
-
-
-
-
 }

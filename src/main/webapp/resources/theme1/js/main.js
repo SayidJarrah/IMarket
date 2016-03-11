@@ -30,11 +30,50 @@ function display(data) {
     $('#feedback').html(json);
 }
 
+function newProductDoAjaxPost() {
+    var id = $("#product_category").val();
+    var name = $("#product_name").val();
+    var price = $("#product_price").val();
+    var amount = $("#product_amount").val();
+    var description = $("#description").val();
+    var json = {id: id, name: name, price: price, availableAmount: amount, description: description};
+
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "POST",
+        url: "/admin/addNewProduct",
+        dataType: 'json',
+        data: JSON.stringify(json),
+        beforeSend: saveMedia(),
+        success: function (response) {
+            console.log(response);
+            display(response)
+
+        }
+    });
+}
+
+function saveMedia() {
+    var formData = new FormData();
+    formData.append('file', $('input[type=file]')[0].files[0]);
+    console.log("form data " + formData);
+    $.ajax({
+        url : '/imageDisplay',
+        data : formData,
+        processData : false,
+        contentType : false,
+        type : 'POST'
+    });
+}
+
 function putToBucketAjaxPost(id) {
     $.ajax({
         type: "POST",
         url: "/bucket",
-        data: "id="+id,
+        data: "id=" + id,
 
         success: function (response) {
             $('#feedback').html(response);
