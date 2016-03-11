@@ -19,15 +19,21 @@ function newCategoryDoAjaxPost() {
         },
         success: function (response) {
             console.log(response);
-            display(response)
+            displayCategory(response)
 
         }
     })
 }
-function display(data) {
-    var json = "<h4>Ajax Response</h4><pre>"
-        + JSON.stringify(data, null, 4) + "</pre>";
-    $('#feedback').html(json);
+
+function displayProduct(data) {
+    var info = "Product :<strong>" +data.name +"</strong> successfully added";
+    $('#feedback').html(info);
+}
+
+
+function displayCategory(data) {
+    var info = "Category :<strong>" +data.name +"</strong> successfully added";
+    $('#feedback').html(info);
 }
 
 function newProductDoAjaxPost() {
@@ -49,8 +55,7 @@ function newProductDoAjaxPost() {
         data: JSON.stringify(json),
         beforeSend: saveMedia(),
         success: function (response) {
-            console.log(response);
-            display(response)
+            displayProduct(response)
 
         }
     });

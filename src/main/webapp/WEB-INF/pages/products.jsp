@@ -16,15 +16,11 @@
 </head>
 <body>
 <section>
-    <div class="jumbotron">
-        <div class="container">
+    <div class="container">
+        <div class="jumbotron">
             <c:choose>
                 <c:when test="${pageContext.request.userPrincipal.name != null}">
                     <p class="pull-right"> Welcome, ${pageContext.request.userPrincipal.name} !</p>
-                    <br>
-
-                    <div style="font-size: small" class="pull-right" id="feedback"></div>
-                    <div style="font-size: small" class="pull-right"> Currently in Your bucket:</div>
                     <br>
                     <a href='<c:url value="/profile" />' class="btn btn-primary pull-right"> <span
                             class="glyphicon glyphicon-list-alt"></span> Profile</a>
@@ -34,6 +30,11 @@
                         <span class="glyphicon glyphicon-off"></span> logout</a>
                     <a href='<c:url value="/bucket" />' class="btn btn-warning pull-right"> <span
                             class="glyphicon-shopping-cart glyphicon"></span> bucket</a>
+                    <c:if test="${pageContext.request.userPrincipal.name.equals('admin')}">
+                        <a href='<c:url value="/admin/addNewProduct" />'
+                           class="btn btn-danger btn-large pull-right"> <span
+                                class="glyphicon glyphicon-list-alt"></span> add product</a>
+                    </c:if>
                 </c:when>
                 <c:otherwise>
                     <div>
@@ -59,36 +60,35 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h3> ${product.name}</h3>
-                        <img height="140px" width="140px" src="/imageDisplay?id=${product.id}"/>
+                        <img height="150px" width="150px"
+                             src="/imageDisplay?id=${product.id}"/>
                         </a>
-                        <p>Price : ${product.price}</p>
+                        <h5><b>Price :</b> <span class="label label-primary">${product.price}</span></h5>
 
-                        <p>Category: ${product.category.name}</p>
+                        <h5><b>Category:</b> <span class="label label-warning">${product.category.name}</span></h5>
 
-                        <p>Available : ${product.availableAmount}</p>
+                        <h5><b>Available :</b> <span class="label label-info">${product.availableAmount}</span></h5>
 
-                        <p>
-                            <a href="<spring:url value="/detail?id=${product.id}" />" class="btn btn-primary">
-                                <span class="glyphicon-info-sign glyphicon"> </span> Details</a>
-                            <c:choose>
-                                <c:when test="${pageContext.request.userPrincipal.name != null}">
-                                    <input type="button" class="btn btn-warning btn-large" value="Add"
-                                           onclick="putToBucketAjaxPost(${product.id})">
-                                    <!--glyphicon-shopping-cart glyphicon-->
-                                </c:when>
-                                <c:otherwise>
-                                    <input type="button" class="btn btn-warning btn-large" value="Add"
-                                           onclick="window.location.href='/login'" />
-                                </c:otherwise>
-                            </c:choose>
-                        </p>
+                        <a href="<spring:url value="/detail?id=${product.id}" />" class="btn btn-primary">
+                            <span class="glyphicon-info-sign glyphicon"> </span> Details</a>
+                        <c:choose>
+                            <c:when test="${pageContext.request.userPrincipal.name != null}">
+                                <input type="button" class="btn btn-warning btn-large" value="Add"
+                                       onclick="putToBucketAjaxPost(${product.id})">
+                                <!--glyphicon-shopping-cart glyphicon-->
+                            </c:when>
+                            <c:otherwise>
+                                <input type="button" class="btn btn-warning btn-large" value="Add"
+                                       onclick="window.location.href='/login'"/>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>
         </c:forEach>
     </div>
 </section>
-<
+<!--
 <form action="/products/sortAsc" method="post">
     <input type="submit" value="Sort by price asc">
 </form>
@@ -96,16 +96,6 @@
 <form action="/products/sortDesc" method="post">
     <input type="submit" value="Sort by price desc">
 </form>
-
-
-<a href="/admin/addNewProduct">ADD NEW PRODUCT </a>
-<br>
-<a href="/admin/addNewCategory">ADD NEW CATEGORY </a>
-<br>
-<a href="/search">SEARCH PRODUCT</a>
-<br>
-<a href="/bucket">CHECK OUT</a>
-
-
+-->
 </body>
 </html>

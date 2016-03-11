@@ -10,8 +10,8 @@
 </head>
 <body>
 <section>
-    <div class="jumbotron">
-        <div class="container">
+    <div class="container">
+        <div class="jumbotron">
             <h1>IMarket</h1>
         </div>
     </div>
@@ -22,7 +22,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Please sign in</h3>
+                    <h3 class="panel-title">Please fill all fields</h3>
                 </div>
                 <div class="panel-body">
 
@@ -33,25 +33,25 @@
                                 <sf:input class="form-control" placeholder="Login" path="login" id="login"/>
                             </div>
                             <div class="form-group">
-                                <sf:input class="form-control"  placeholder="Password" path="password" id="password"/>
+                                <sf:input class="form-control" placeholder="Password" path="password" id="password"/>
                             </div>
                             <div class="form-group">
-                                <sf:input class="form-control"  placeholder="Name" path="firstName" id="name"/>
+                                <sf:input class="form-control" placeholder="Name" path="firstName" id="name"/>
                             </div>
                             <div class="form-group">
-                                <sf:input class="form-control"  placeholder="Surname" path="secondName" id="surname"/>
+                                <sf:input class="form-control" placeholder="Surname" path="secondName" id="surname"/>
                             </div>
                             <div class="form-group">
-                                <sf:input class="form-control"  placeholder="Email" path="email" id="email"/>
+                                <sf:input class="form-control" placeholder="Email" path="email" id="email"/>
                             </div>
                             <div class="form-group">
-                                <sf:input class="form-control"  placeholder="City" path="city" id="city"/>
+                                <sf:input class="form-control" placeholder="City" path="city" id="city"/>
                             </div>
                             <div class="form-group">
-                                <sf:input class="form-control"  placeholder="Address" path="address" id="address"/>
+                                <sf:input class="form-control" placeholder="Address" path="address" id="address"/>
                             </div>
                             <div class="form-group">
-                                <sf:input class="form-control"  placeholder="Phone" path="phone" id="phone" />
+                                <sf:input class="form-control" placeholder="Phone" path="phone" id="phone"/>
                             </div>
                         </fieldset>
                         <input class="btn btn-lg btn-success btn-block" type="submit" value="Submit"/>

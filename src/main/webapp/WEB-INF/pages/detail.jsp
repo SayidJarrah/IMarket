@@ -14,8 +14,8 @@
 <body>
 
 <section>
-    <div class="jumbotron">
-        <div class="container">
+    <div class="container">
+        <div class="jumbotron">
             <c:choose>
                 <c:when test="${pageContext.request.userPrincipal.name != null}">
                     <p class="pull-right"> Welcome, ${pageContext.request.userPrincipal.name} !</p>

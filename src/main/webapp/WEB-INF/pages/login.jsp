@@ -3,15 +3,15 @@
 <html>
 <head>
     <title>Login Page</title>
-    <spring:url value="/resources/theme1/css/styles.css" var="mainCss" />
-    <link href="${mainCss}" rel="stylesheet" />
+    <spring:url value="/resources/theme1/css/styles.css" var="mainCss"/>
+    <link href="${mainCss}" rel="stylesheet"/>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body onload='document.loginForm.username.focus();'>
 
 <section>
-    <div class="jumbotron">
-        <div class="container">
+    <div class="container">
+        <div class="jumbotron">
             <h1>IMarket</h1>
         </div>
     </div>
@@ -25,10 +25,10 @@
                 </div>
                 <div class="panel-body">
                     <c:if test="${not empty error}">
-                    <div class="error">${error}</div>
+                        <div class="error">${error}</div>
                     </c:if>
                     <c:if test="${not empty msg}">
-                    <div class="msg">${msg}</div>
+                        <div class="msg">${msg}</div>
                     </c:if>
 
                     <form name='loginForm'
@@ -44,8 +44,10 @@
                             </div>
                             <input class="btn btn-lg btn-success btn-block" name="submit" type="submit"
                                    value="log in"/>
+
                             <div>
-                                <a href='<c:url value="/registration" />' class="btn btn-lg btn-primary btn-block myMargin">sign up</a>
+                                <a href='<c:url value="/registration" />'
+                                   class="btn btn-lg btn-primary btn-block myMargin">sign up</a>
                             </div>
 
                         </fieldset>
@@ -54,10 +56,10 @@
                                value="${_csrf.token}"/>
 
                     </form>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>

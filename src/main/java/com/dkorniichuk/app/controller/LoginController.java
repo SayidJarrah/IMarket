@@ -34,14 +34,14 @@ public class LoginController {
             model.addObject("msg", "You've been logged out successfully.");
         }
         model.setViewName("login");
-
+        bucketService.clear();
         return model;
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        bucketService.clear();
+
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }

@@ -12,17 +12,12 @@
 <body>
 
 <section>
-    <div class="jumbotron">
-        <div class="container">
+    <div class="container">
+        <div class="jumbotron">
             <c:choose>
                 <c:when test="${pageContext.request.userPrincipal.name != null}">
                     <p class="pull-right"> Welcome, ${pageContext.request.userPrincipal.name} !</p>
                     <br>
-
-                    <div style="font-size: small" class="pull-right" id="feedback"></div>
-                    <div style="font-size: small" class="pull-right"> Currently in Your bucket:</div>
-                    <br>
-
                     <a href='<c:url value="/profile" />' class="btn btn-primary pull-right"> <span
                             class="glyphicon glyphicon-list-alt"></span> Profile</a>
 
@@ -60,7 +55,8 @@
                 <td>${product.category.name}</td>
                 <td>${product.price}</td>
                 <form method="get" action="/bucket/${product.id}">
-                    <td><input type="submit" class="btn xsmall btn-warning" onclick="location.href='/bucket/${product.id}"
+                    <td><input type="submit" class="btn xsmall btn-warning"
+                               onclick="location.href='/bucket/${product.id}"
                                value="remove"></td>
                 </form>
             </tr>
