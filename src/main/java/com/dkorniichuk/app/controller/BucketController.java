@@ -5,6 +5,8 @@ import com.dkorniichuk.app.service.BucketService;
 import com.dkorniichuk.app.service.OrderService;
 import com.dkorniichuk.app.service.ProductService;
 import com.dkorniichuk.app.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,16 +30,20 @@ public class BucketController {
     private UserService userService;
     @Autowired
     private BucketService bucketService;
+    private static final Logger logger = LoggerFactory.getLogger(BucketController.class);
+
 
 
     @RequestMapping(value = "/bucket", method = RequestMethod.GET)
     public String initBucket(Model model) {
         model.addAttribute("products", bucketService.get());
+        logger.info("loaded bucket page");
         return "bucket";
     }
 
     @RequestMapping(value = "/bucket/{id}", method = RequestMethod.GET)
     public String deleteFromBucket(@PathVariable("id") int id) {
+        logger.info("deleted from bucket product with id {}", id);
         bucketService.delete(productService.getProductById(id));
         return "redirect:/bucket";
     }
@@ -46,6 +52,7 @@ public class BucketController {
     public String initOrder(Model model) {
         List<Product> products = bucketService.get();
         productService.updateAmount(products);
+        logger.info("ordered products {}", products);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         orderService.add(products, userService.get(auth.getName()));
         model.addAttribute("products", products);
@@ -55,6 +62,7 @@ public class BucketController {
     @RequestMapping(value = "/cleanBucket", method = RequestMethod.GET)
     public String cleanBucket() {
         bucketService.clear();
+        logger.info("bucket cleaned");
         return "redirect:/products";
     }
 
@@ -62,6 +70,7 @@ public class BucketController {
     @RequestMapping(value = "/bucket",method = RequestMethod.POST)
     public @ResponseBody Integer addToBucket(HttpServletRequest request) {
         bucketService.add(productService.getProductById(Integer.parseInt(request.getParameter("id"))));
+        logger.info("product added to bucket");
         return bucketService.get().size();
     }
 }

@@ -33,10 +33,8 @@ public class NewProductController {
     public
     @ResponseBody
     Product addProduct(@RequestBody Product product) throws IOException {
-        System.out.println(product);
         productService.binding(product);
         product.setImage(productService.loadImageFromTemporaryRepo());
-        System.out.println(product.getImage());
         productService.save(product);
         return product;
     }
