@@ -28,7 +28,7 @@
     </appender>
 
 
-    <logger name="com.dkorniichuk.app" level="info" additivity="false">
+    <logger name="com.dkorniichuk.imarket" level="info" additivity="false">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE_AUDIT"/>
     </logger>
