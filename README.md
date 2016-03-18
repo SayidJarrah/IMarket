@@ -1,7 +1,7 @@
 # IMarket
 
 <H2>UML</H2>
-![alt tag](https://github.com/SayidJarrah/IMarket/blob/master/screens/IMarket_UML_.jpg)
+![alt tag](https://github.com/SayidJarrah/IMarket/blob/master/screens/IMarket_UML_.png)
 
 <H2>ERD</H2>
 ![alt tag](https://github.com/SayidJarrah/IMarket/blob/master/screens/db.jpg)
