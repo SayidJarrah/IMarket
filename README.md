@@ -1,5 +1,11 @@
 # IMarket
 
+
+ToDo list:
+1) add Hibernate instead of jdbcTemplate
+2) move to Spring boot
+3) add AOP
+
 <H2>UML</H2>
 
 ![alt tag](https://github.com/SayidJarrah/IMarket/blob/master/screens/IMarket_UML_.png)
