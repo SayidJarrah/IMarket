@@ -8,8 +8,8 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ProductRowMapper implements RowMapper<Product>{
-@Autowired
+public class ProductRowMapper implements RowMapper<Product> {
+    @Autowired
     private ProductCategoryDao productCategoryDao;
 
     public ProductRowMapper(ProductCategoryDao productCategoryDao) {
@@ -25,7 +25,8 @@ public class ProductRowMapper implements RowMapper<Product>{
         product.setPrice(resultSet.getDouble("product_price"));
         product.setImage(resultSet.getBytes("product_image"));
         product.setDescription(resultSet.getString("product_description"));
-        product.setAppearanceDate(resultSet.getTimestamp("appearance_date").toLocalDateTime());
+        product.setAppearanceDate(resultSet.getTimestamp("appearance_date") == null ? null
+                : resultSet.getTimestamp("appearance_date").toLocalDateTime());
         product.setAvailableAmount(resultSet.getInt("available_amount"));
         return product;
     }

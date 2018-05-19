@@ -5,6 +5,9 @@ ToDo list:
 1) add Hibernate instead of jdbcTemplate
 2) move to Spring boot
 3) add AOP
+4) add emailing
+5) add paging
+6) bug fixing 
 
 <H2>UML</H2>
 

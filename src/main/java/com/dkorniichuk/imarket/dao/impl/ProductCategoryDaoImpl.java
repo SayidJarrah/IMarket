@@ -14,7 +14,7 @@ public class ProductCategoryDaoImpl implements ProductCategoryDao {
     private JdbcTemplate jdbcTemplate;
     private static final String SELECT_ALL_SQL = "SELECT * FROM IMarket.product_category";
     private static final String SELECT_BY_ID_SQL = "SELECT * FROM IMarket.product_category WHERE product_category_id = ?";
-    private static final String INSERT_NEW_CATEGORY_SQL = "INSERT INTO IMarket.Product_category (category_name, description,appearence_date) VALUES(?,?,?)";
+    private static final String INSERT_NEW_CATEGORY_SQL = "INSERT INTO IMarket.Product_category (category_name, description,appearance_date) VALUES(?,?,?)";
 
 
     @Override

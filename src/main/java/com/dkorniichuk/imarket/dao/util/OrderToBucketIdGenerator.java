@@ -11,7 +11,8 @@ public class OrderToBucketIdGenerator {
     private static final String SQL_SELECT_LAST_ID = "SELECT MAX(id_order) FROM IMarket.order";
 
     public int getActualOrderId() {
-        return jdbcTemplate.queryForObject(SQL_SELECT_LAST_ID, Integer.class) + 1;
+        Integer result = jdbcTemplate.queryForObject(SQL_SELECT_LAST_ID, Integer.class);
+        return  result == null ? 0 : result + 1;
     }
 
 }
